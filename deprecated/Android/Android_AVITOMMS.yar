@@ -8,10 +8,10 @@ rule Android_AVITOMMS_Variant
 		source = "https://blog.avast.com/android-banker-trojan-preys-on-credit-card-information"
 
 	condition:
-		(androguard.receiver(/AlarmReceiverKnock/) and 
-		 androguard.receiver(/BootReciv/) and 
+		(androguard.receiver(/AlarmReceiverKnock/) and
+		 androguard.receiver(/BootReciv/) and
 		 androguard.receiver(/AlarmReceiverAdm/))
-		
+
 }
 
 rule Android_AVITOMMS_Rule2
@@ -22,10 +22,10 @@ rule Android_AVITOMMS_Rule2
 		source = "https://blog.avast.com/android-banker-trojan-preys-on-credit-card-information"
 
 	condition:
-		androguard.service(/IMService/) and 
-		androguard.receiver(/BootReciv/) and 
-		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/i) and 
-		androguard.permission(/android.permission.KILL_BACKGROUND_PROCESSES/i) and 
+		androguard.service(/IMService/) and
+		androguard.receiver(/BootReciv/) and
+		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/i) and
+		androguard.permission(/android.permission.KILL_BACKGROUND_PROCESSES/i) and
 		androguard.permission(/android.permission.SEND_SMS/i) and
 		androguard.permission(/android.permission.INTERNET/i)
 }

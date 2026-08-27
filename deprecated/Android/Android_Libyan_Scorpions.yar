@@ -1,12 +1,12 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-	Androguard module used in this rule file is under development by people at https://koodous.com/.
 
-	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
-*/
+
+
+
+
+
+
+
 
 import "androguard"
 import "cuckoo"
@@ -35,5 +35,5 @@ rule libyan_scorpions
 		androguard.url(/sara2011.no-ip.biz/i) or cuckoo.network.dns_lookup(/sara2011.no-ip.biz/i) or
 		any of ($domain_*) or any of ($ip_*) or
 		androguard.certificate.sha1("DFFDD3C42FA06BCEA9D65B8A2E980851383BD1E3")
-		
+
 }

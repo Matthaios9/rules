@@ -1,12 +1,12 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-	Androguard module used in this rule file is under development by people at https://koodous.com/.
 
-	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
-*/
+
+
+
+
+
+
+
 import "androguard"
 
 
@@ -28,7 +28,7 @@ rule andr_sk_bank
 		androguard.package_name("com.qbjkyd.rhsxa") or
 		androguard.certificate.sha1("543382EDDAFC05B435F13BBE97037BB335C2948B") or
 		(androguard.permission(/android.permission.RECEIVE_SMS/) and
-		androguard.permission(/android.permission.INTERNET/) and 
-		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/) and 
+		androguard.permission(/android.permission.INTERNET/) and
+		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/) and
 		all of ($str_*))
 }

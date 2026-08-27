@@ -1,8 +1,8 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) 
-    and open to any user or organization, as long as you use it under this license.
 
-*/
+
+
+
+
 
 rule Email_Generic_Phishing : email
 {
@@ -24,7 +24,7 @@ rule Email_Generic_Phishing : email
     $url_3="Verify" nocase
     $url_4="Here" nocase
     $url_5="Now" nocase
-    $url_6="Change password" nocase 
+    $url_6="Change password" nocase
 
     $lie_1="Unauthorized" nocase
     $lie_2="Expired" nocase

@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
+
+
+
 
 rule adware : ads android
 {
@@ -17,5 +17,5 @@ rule adware : ads android
 
 	condition:
 		all of ($string_*)
-		
+
 }

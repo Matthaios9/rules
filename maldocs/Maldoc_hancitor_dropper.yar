@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.
-*/
+
+
+
 rule hancitor_dropper : vb_win32api
 {
   meta:
@@ -10,10 +10,10 @@ rule hancitor_dropper : vb_win32api
     hash3  = "a78972ac6dee8c7292ae06783cfa1f918bacfe956595d30a0a8d99858ce94b5a"
 
   strings:
-    $api_01 = { 00 56 69 72 74 75 61 6C 41 6C 6C 6F 63 00 }  // VirtualAlloc
-    $api_02 = { 00 52 74 6C 4D 6F 76 65 4D 65 6D 6F 72 79 00 }  // RtlMoveMemory
-    $api_04 = { 00 43 61 6C 6C 57 69 6E 64 6F 77 50 72 6F 63 41 00 }  // CallWindowProcAi
-    $magic  = { 50 4F 4C 41 }  // POLA
+    $api_01 = { 00 56 69 72 74 75 61 6C 41 6C 6C 6F 63 00 }
+    $api_02 = { 00 52 74 6C 4D 6F 76 65 4D 65 6D 6F 72 79 00 }
+    $api_04 = { 00 43 61 6C 6C 57 69 6E 64 6F 77 50 72 6F 63 41 00 }
+    $magic  = { 50 4F 4C 41 }
 
   condition:
     uint32be(0) == 0xD0CF11E0 and all of ($api_*) and $magic

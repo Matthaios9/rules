@@ -1,11 +1,11 @@
-/*
-   Yara Rule Set
-   Date: 2018-09-13
-   Identifier: APT 10 (MenuPass)
-   Reference: https://www.us-cert.gov/ncas/alerts/TA17-117A
-*/
 
-/* Rule Set ----------------------------------------------------------------- */
+
+
+
+
+
+
+
 
 import "hash"
 

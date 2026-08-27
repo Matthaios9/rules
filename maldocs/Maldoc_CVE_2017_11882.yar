@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.
-*/
+
+
+
 
 rule Maldoc_CVE_2017_11882 : Exploit {
     meta:
@@ -13,6 +13,6 @@ rule Maldoc_CVE_2017_11882 : Exploit {
         $s1 = "1c000000020"
         $h0 = {1C 00 00 00 02 00}
 
-    condition: 
+    condition:
         (uint32be(0) == 0x7B5C7274 or $doc at 0 ) and $s0 and ($h0 or $s1)
 }

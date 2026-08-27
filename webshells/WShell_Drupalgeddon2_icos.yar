@@ -1,15 +1,15 @@
-/*
-This Yara ruleset is under the GNU-GPLv2 license 
-(http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or 
-organization, as long as you use it under this license.
-*/
 
-/*
-Date: 4 october, 2019
-Description: Drupalgeddon 2 - Web Shells Extract. This rules matchs with
-webshells that inserts the Drupal core vulnerability SA-CORE-2018-002 
-(https://www.drupal.org/sa-core-2018-002)
-*/
+
+
+
+
+
+
+
+
+
+
+
 
 rule Dotico_PHP_webshell : webshell {
     meta:

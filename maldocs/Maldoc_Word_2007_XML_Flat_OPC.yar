@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.
-*/
+
+
+
 
 rule Word_2007_XML_Flat_OPC : maldoc
 {
@@ -12,15 +12,15 @@ rule Word_2007_XML_Flat_OPC : maldoc
 		hash2 = "2af21d35bb909a0ac081c2399d0939b1"
 		hash3 = "72ffa688c228b0b833e69547885650fe"
 		filetype = "Office documents"
-		
+
 	strings:
-		$xml = "<?xml" // XML declaration
-		$WordML = "<?mso-application progid=\"Word.Document\"?>" // XML processing instruction => A Windows OS with Microsoft Office installed will recognize the file as a MS Word document.
-		$OPC = "<pkg:package" // Open XML Package
-		$xmlns = "http://schemas.microsoft.com/office/2006/xmlPackage" // XML namespace => Microsoft Office 2007 XML Schema Reference
-		$binaryData = "<pkg:binaryData>0M8R4KGxGuE" // Binary Part (Microsoft Office 2007+ document encoded in a Base64 string, broken into lines of 76 characters) => D0 CF 11 E0 A1 B1 1A E1 (vbaProject.bin / DOCM)
-		$docm = "pkg:name=\"/word/vbaProject.bin\"" // Binary Object
-		
+		$xml = "<?xml"
+		$WordML = "<?mso-application progid=\"Word.Document\"?>"
+		$OPC = "<pkg:package"
+		$xmlns = "http://schemas.microsoft.com/office/2006/xmlPackage"
+		$binaryData = "<pkg:binaryData>0M8R4KGxGuE"
+		$docm = "pkg:name=\"/word/vbaProject.bin\""
+
 	condition:
-	 	$xml at 0 and $WordML and $OPC and $xmlns and $binaryData and $docm
+		$xml at 0 and $WordML and $OPC and $xmlns and $binaryData and $docm
 }

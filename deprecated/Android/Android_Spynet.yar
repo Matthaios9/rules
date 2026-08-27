@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
+
+
+
 
 rule SpyNet : malware
 {
@@ -20,5 +20,5 @@ rule SpyNet : malware
 	$h = "send|999SAnd|TimeStart"
 	$i = "!s!c!r!e!a!m!"
 	condition:
-		4 of them 
+		4 of them
 }

@@ -1,12 +1,12 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-	Androguard module used in this rule file is under development by people at https://koodous.com/.
 
-	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
-*/
+
+
+
+
+
+
+
 
 import "androguard"
 
@@ -33,11 +33,11 @@ rule fake_facebook_2 : fake android
 		hash_5 = "7be33c2d27121968d2f7081ae2b04965238a3c15c7aae62d006f629d64e0b58e"
 		hash_6 = "c1264c689393880361409eb02570fd49bec91c88569d39062e13c0c8ae0e1806"
 		hash_7 = "7345c3124891b34607a07e93c8ab6dcbbf513e24e936c3710434b085981b815a"
-		
+
 	condition:
 		androguard.app_name("Facebook") and
-		not androguard.package_name(/com.facebook.katana/) and 
-		not androguard.certificate.issuer(/O=Facebook Mobile/)	
+		not androguard.package_name(/com.facebook.katana/) and
+		not androguard.certificate.issuer(/O=Facebook Mobile/)
 }
 
 rule fake_instagram: fake android
@@ -73,7 +73,7 @@ rule fake_market: fake android
 		reference = "https://koodous.com/"
 
 	condition:
-		androguard.package_name("com.minitorrent.kimill") 
+		androguard.package_name("com.minitorrent.kimill")
 }
 
 
@@ -82,7 +82,7 @@ rule fake_minecraft: fake android
   meta:
 		reference = "https://koodous.com/"
 	condition:
-		( androguard.app_name("Minecraft: Pocket Edition") or 
+		( androguard.app_name("Minecraft: Pocket Edition") or
 			androguard.app_name("Minecraft - Pocket Edition") )
 		and not androguard.package_name("com.mojang.minecraftpe")
 }

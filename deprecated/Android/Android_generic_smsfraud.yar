@@ -1,9 +1,9 @@
 rule genericSMS : smsFraud android
 {
 	meta:
-            	reference = "https://koodous.com/"
-	    	sample = "3fc533d832e22dc3bc161e5190edf242f70fbc4764267ca073de5a8e3ae23272"
-	    	sample2 = "3d85bdd0faea9c985749c614a0676bb05f017f6bde3651f2b819c7ac40a02d5f"
+	reference = "https://koodous.com/"
+		sample = "3fc533d832e22dc3bc161e5190edf242f70fbc4764267ca073de5a8e3ae23272"
+		sample2 = "3d85bdd0faea9c985749c614a0676bb05f017f6bde3651f2b819c7ac40a02d5f"
 
 	strings:
 		$a = "SHA1-Digest: +RsrTx5SNjstrnt7pNaeQAzY4kc="
@@ -13,7 +13,7 @@ rule genericSMS : smsFraud android
 
 	condition:
 		all of them
-		
+
 }
 
 rule genericSMS2 : smsFraud android
@@ -32,5 +32,5 @@ rule genericSMS2 : smsFraud android
 
 	condition:
 		all of them
-		
+
 }

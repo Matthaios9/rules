@@ -11,7 +11,7 @@ rule marcher1
 
 	condition:
 		all of them
-		
+
 }
 
 rule marcher2
@@ -23,7 +23,7 @@ rule marcher2
 		$b = "lElvyohc9Y1X+nzVUEjW8W3SbUA"
 	condition:
 		all of them
-		
+
 }
 
 rule marcher3
@@ -35,7 +35,7 @@ rule marcher3
 	strings:
 		$a = "certificado # 73828394"
 		$b = "A compania TMN informa que o vosso sistema Android tem vulnerabilidade"
-		
+
 	condition:
 		all of them
 }

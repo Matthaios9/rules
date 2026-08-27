@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
+
+
+
 
 import "androguard"
 import "cuckoo"
@@ -17,7 +17,7 @@ rule VikingBotnet
 		$b = "http://joyappstech.biz:11111/knock/"
 		$c = "I HATE TESTERS onGlobalLayout"
 		$d = "http://144.76.70.213:7777/ecspectapatronum/"
-		
+
 	condition:
-		($a and $c) or ($b and $d) 
+		($a and $c) or ($b and $d)
 }

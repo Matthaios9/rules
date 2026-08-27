@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
+
+
+
 
 import "pe"
 
@@ -70,57 +70,57 @@ rule DebuggerHiding__Active : AntiDebug DebuggerHiding {
 		any of them
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerTiming__PerformanceCounter : AntiDebug DebuggerTiming {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ ="QueryPerformanceCounter"
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerTiming__Ticks : AntiDebug DebuggerTiming {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ ="GetTickCount"
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerOutput__String : AntiDebug DebuggerOutput {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ ="OutputDebugString"
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerException__UnhandledFilter : AntiDebug DebuggerException {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ ="SetUnhandledExceptionFilter"
-	condition:
-		any of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule DebuggerException__ConsoleCtrl : AntiDebug DebuggerException {
 	meta:
@@ -174,7 +174,7 @@ rule SEH__v3 : AntiDebug SEH {
 }
 
 rule SEH__v4 : AntiDebug SEH {
-    // VS 8.0+
+
 	meta:
 		weight = 1
 		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
@@ -207,57 +207,57 @@ rule SEH__vectored : AntiDebug SEH {
 		any of them
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerPattern__RDTSC : AntiDebug DebuggerPattern {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ = {0F 31}
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerPattern__CPUID : AntiDebug DebuggerPattern {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ = {0F A2}
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerPattern__SEH_Saves : AntiDebug DebuggerPattern {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ = {64 ff 35 00 00 00 00}
-	condition:
-		any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule DebuggerPattern__SEH_Inits : AntiDebug DebuggerPattern {
-	meta:
-		weight = 1
-		reference = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
-	strings:
-		$ = {64 89 25 00 00 00 00}
-	condition:
-		any of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule SEH_Save : Tactic_DefensiveEvasion Technique_AntiDebugging SubTechnique_SEH
 {
@@ -411,14 +411,14 @@ rule vmdetect
         description = "Possibly employs anti-virtualization techniques"
 
     strings:
-        // Binary tricks
+
         $vmware = {56 4D 58 68}
         $virtualpc = {0F 3F 07 0B}
         $ssexy = {66 0F 70 ?? ?? 66 0F DB ?? ?? ?? ?? ?? 66 0F DB ?? ?? ?? ?? ?? 66 0F EF}
         $vmcheckdll = {45 C7 00 01}
         $redpill = {0F 01 0D 00 00 00 00 C3}
 
-        // Random strings
+
         $vmware1 = "VMXh"
         $vmware2 = "Ven_VMware_" nocase
         $vmware3 = "Prod_VMware_Virtual_" nocase
@@ -462,7 +462,7 @@ rule vmdetect
         $virtualbox7 = "VBoxGuestAdditions" nocase
         $virtualbox8 = "VBOX HARDDISK"  nocase
 
-        // MAC addresses
+
         $vmware_mac_1a = "00-05-69"
         $vmware_mac_1b = "00:05:69"
         $vmware_mac_1c = "000569"
@@ -501,7 +501,7 @@ rule Check_DriveSize
 
 	strings:
 		$physicaldrive = "\\\\.\\PhysicalDrive0" wide ascii nocase
-		$dwIoControlCode = {68 5c 40 07 00 [0-5] FF 15} //push 7405ch ; push esi (handle) then call deviceoiocontrol IOCTL_DISK_GET_LENGTH_INFO
+		$dwIoControlCode = {68 5c 40 07 00 [0-5] FF 15}
 	condition:
 		pe.imports("kernel32.dll","CreateFileA") and
 		pe.imports("kernel32.dll","DeviceIoControl") and
@@ -548,33 +548,33 @@ rule Check_OutputDebugStringA_iat
 		pe.imports("kernel32.dll","OutputDebugStringA")
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule Check_unhandledExceptionFiler_iat {
 
-	meta:
-		Description = "it's checked if UnhandledExceptionFilter is imported"
-		Date = "20/04/2015"
-		Reference = "http://www.codeproject.com/Articles/30815/An-Anti-Reverse-Engineering-Guide#UnhandledExceptionFilter"
 
-	condition:
-		pe.imports("kernel32.dll","UnhandledExceptionFilter")
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule check_RaiseException_iat {
 
-	meta:
-		Description = "it's checked if RaiseException is imported"
-		Date = "20/04/2015"
-		Reference = "http://waleedassar.blogspot.com.es/2012/11/ollydbg-raiseexception-bug.html"
 
-	condition:
-		pe.imports("kernel32.dll","RaiseException")
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule Check_FindWindowA_iat {
 
@@ -635,7 +635,7 @@ rule anti_dbg {
         description = "Checks if being debugged"
 	version = "0.2"
     strings:
-    	$d1 = "Kernel32.dll" nocase
+	$d1 = "Kernel32.dll" nocase
         $c1 = "CheckRemoteDebuggerPresent"
         $c2 = "IsDebuggerPresent"
         $c3 = "OutputDebugString"
@@ -747,7 +747,7 @@ rule antivm_vmware {
         $s5 = "vmware-vmx.exe" nocase
         $s6 = "vmnetdhcp.exe" nocase
         $s7 = "vpxclient.exe" nocase
-    	$s8 = { b868584d56bb00000000b90a000000ba58560000ed }
+	$s8 = { b868584d56bb00000000b90a000000ba58560000ed }
     condition:
         any of them
 }
@@ -905,7 +905,7 @@ rule vmdetect_misc : vmdetect
 		$miscvm1 = "SYSTEM\\ControlSet001\\Services\\Disk\\Enum" nocase ascii wide
 		$miscvm2 = "SYSTEM\\\\ControlSet001\\\\Services\\\\Disk\\\\Enum" nocase ascii wide
 
-		// Drivers
+
 		$vmdrv1 = "hgfs.sys" ascii wide
 		$vmdrv2 = "vmhgfs.sys" ascii wide
 		$vmdrv3 = "prleth.sys" ascii wide
@@ -918,7 +918,7 @@ rule vmdetect_misc : vmdetect
 		$vmdrv10 = "vmx86.sys" ascii wide
 		$vmdrv11 = "vmnet.sys" ascii wide
 
-		// SYSTEM\ControlSet001\Services
+
 		$vmsrvc1 = "vmicheartbeat" ascii wide
 		$vmsrvc2 = "vmicvss" ascii wide
 		$vmsrvc3 = "vmicshutdown" ascii wide
@@ -943,7 +943,7 @@ rule vmdetect_misc : vmdetect
 		$vmsrvc22 = "xensvc" ascii wide
 		$vmsrvc23 = "xenvdb" ascii wide
 
-		// Processes
+
 		$miscproc1 = "vmware2" ascii wide
 		$miscproc2 = "vmount2" ascii wide
 		$miscproc3 = "vmusrvc" ascii wide

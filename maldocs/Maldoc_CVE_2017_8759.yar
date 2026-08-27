@@ -1,13 +1,13 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
-/*
-   Yara Rule Set
-   Date: 2017-09-14
-   Identifier: Detects malicious files in releation with CVE-2017-8759
-   Reference: https://github.com/Voulnet/CVE-2017-8759-Exploit-sample
-*/
+
+
+
+
+
+
+
+
+
 
 private rule RTFFILE {
    meta:
@@ -16,7 +16,7 @@ private rule RTFFILE {
       uint32be(0) == 0x7B5C7274
 }
 
-/* Rule Set ----------------------------------------------------------------- */
+
 
 rule CVE_2017_8759_Mal_HTA {
    meta:

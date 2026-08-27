@@ -1,7 +1,7 @@
-/*
-    Finds PHP code in JP(E)Gs, GIFs, PNGs.
-    Magic numbers via Wikipedia.
-*/
+
+
+
+
 rule php_in_image
 {
     meta:

@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
+
+
+
 
 rule maldoc_API_hashing : maldoc
 {
@@ -12,32 +12,32 @@ strings:
         any of them
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule maldoc_function_prolog_signature : maldoc
-{
-strings:
-        $a1 = {55 8B EC 81 EC}
-        $a2 = {55 8B EC 83 C4}
-        $a3 = {55 8B EC E8}
-        $a4 = {55 8B EC E9}
-        $a5 = {55 8B EC EB}
-    condition:
-        any of them
-}
-*/
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule maldoc_structured_exception_handling : maldoc
-{
-strings:
-        $a1 = {64 8B (05|0D|15|1D|25|2D|35|3D) 00 00 00 00}
-        $a2 = {64 A1 00 00 00 00}
-    condition:
-        any of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule maldoc_indirect_function_call_1 : maldoc
 {
@@ -105,31 +105,31 @@ strings:
         any of them
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule maldoc_suspicious_strings : maldoc
-{
-strings:
-        $a01 = "CloseHandle"
-        $a02 = "CreateFile"
-        $a03 = "GetProcAddr"
-        $a04 = "GetSystemDirectory"
-        $a05 = "GetTempPath"
-        $a06 = "GetWindowsDirectory"
-        $a07 = "IsBadReadPtr"
-        $a08 = "IsBadWritePtr"
-        $a09 = "LoadLibrary"
-        $a10 = "ReadFile"
-        $a11 = "SetFilePointer"
-        $a12 = "ShellExecute"
-        $a13 = "UrlDownloadToFile"
-        $a14 = "VirtualAlloc"
-        $a15 = "WinExec"
-        $a16 = "WriteFile"
-    condition:
-        any of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule mwi_document: exploitdoc maldoc
 {
@@ -149,7 +149,7 @@ rule mwi_document: exploitdoc maldoc
 rule macrocheck : maldoc
 {
     meta:
-        Date        = "2014/11/30" 
+        Date        = "2014/11/30"
         Description = "Identify office documents with the MACROCHECK credential stealer in them.  It can be run against .doc files or VBA macros extraced from .docx files (vbaProject.bin files)."
         Reference   = "https://www.fireeye.com/blog/threat-research/2014/11/fin4_stealing_insid.html"
 
@@ -162,7 +162,7 @@ rule macrocheck : maldoc
         $invalid = "Invalid username or password" ascii wide
         $up1 = "uploadPOST" ascii wide
         $up2 = "postUpload" ascii wide
- 
+
     condition:
         all of ($PARAM*) or (($invalid or $userloginform or $userform) and ($up1 or $up2))
 }
@@ -220,7 +220,7 @@ rule Embedded_EXE_Cloaking : maldoc {
         $noex_gif = { 47 49 46 38 }
         $mz  = { 4D 5A }
         $a1 = "This program cannot be run in DOS mode"
-        $a2 = "This program must be run under Win32"       
+        $a2 = "This program must be run under Win32"
     condition:
         (
             ( $noex_png at 0 ) or
@@ -233,7 +233,7 @@ rule Embedded_EXE_Cloaking : maldoc {
         for any i in (1..#mz): ( @a1 < ( @mz[i] + 200 ) or @a2 < ( @mz[i] + 200 ) )
 }
 
-// This rule have beed improved by Javier Rascon
+
 rule RTF_Shellcode : maldoc
 {
     meta:
@@ -244,7 +244,7 @@ rule RTF_Shellcode : maldoc
 
     strings:
         $rtfmagic={7B 5C 72 74 66}
-        /* $scregex=/[39 30]{2,20}/ */
+
         $scregex=/(90){2,20}/
 
     condition:

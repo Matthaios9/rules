@@ -1,23 +1,23 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
 
-/*
 
-   THOR APT Scanner - Web Shells Extract
-   This rulset is a subset of all hack tool rules included in our
-   APT Scanner THOR - the full featured APT scanner
 
-   We will frequently update this file with new rules rated TLP:WHITE
 
-   Florian Roth
-   BSK Consulting GmbH
-   Web: bsk-consulting.de
 
-   revision: 20150122
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule Weevely_Webshell : webshell {
 	meta:
@@ -3013,7 +3013,7 @@ rule webshell_webshells_new_Asp {
 		1 of them
 }
 
-/* Update from hackers tool pack */
+
 
 rule perlbot_pl {
 	meta:
@@ -4703,7 +4703,7 @@ rule multiple_webshells_0032 {
 		2 of them
 }
 
-/* GIF Header webshell */
+
 
 rule DarkSecurityTeam_Webshell {
 	meta:
@@ -4727,7 +4727,7 @@ rule PHP_Cloaked_Webshell_SuperFetchExec {
 		$s0
 }
 
-/* PHP Webshell Update - August 2014 - deducted from https://github.com/JohnTroony/php-webshells */
+
 
 rule WebShell_RemExp_asp_php {
 	meta:
@@ -5901,25 +5901,25 @@ rule WebShell_Generic_PHP_4 {
 	condition:
 		all of them
 }
-/*
-rule WebShell_Generic_PHP_5 {
-	meta:
-		description = "PHP Webshells Github Archive - from files ex0shell.php, megabor.php, GRP WebShell 2.0 release build 2018 (C)2006,Great.php"
-		super_rule = 1
-		hash0 = "64461ad8d8f23ea078201a31d747157f701a4e00"
-		hash1 = "3df1afbcfa718da6fc8af27554834ff6d1a86562"
-		hash2 = "ad86ef7f24f75081318146edc788e5466722a629"
-	strings:
-		$s0 = "(($perms & 0x0400) ? 'S' : '-'));" fullword
-		$s10 = "} elseif (($perms & 0x8000) == 0x8000) {" fullword
-		$s11 = "if (($perms & 0xC000) == 0xC000) {" fullword
-		$s12 = "$info .= (($perms & 0x0008) ?" fullword
-		$s16 = "// Block special" fullword
-		$s18 = "$info = 's';" fullword
-	condition:
-		all of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 rule WebShell_GFS {
 	meta:
 		description = "PHP Webshells Github Archive - from files GFS web-shell ver 3.1.7 - PRiV8.php, Predator.php, GFS_web-shell_ver_3.1.7_-_PRiV8.php"
@@ -7710,12 +7710,12 @@ rule ASPXspy2 {
 }
 
 
-/*
-	Yara Rule Set
-	Date: 2016-01-11
-	Identifier: Web Shell Repo
-	Reference: https://github.com/nikicat/web-malware-collection
-*/
+
+
+
+
+
+
 
 rule Webshell_27_9_c66_c99 {
 	meta:

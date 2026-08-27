@@ -1,17 +1,17 @@
-/*
-    Webshell "fire2013.php" - shell apended to PHP!Anuna code,
-    found in the wild both appended and single.
 
-    Shell prints a fake "404 not found" Apache message, while
-    the user has to post "pass=Fuck1950xx=" to enable it.
 
-    As written in the original (decoded PHP) file,
-    @define('VERSION', 'v4 by Sp4nksta');
 
-    Shell is also backdoored, it mails the shell location and
-    info on "h4x4rwow@yahoo.com" as written in the "system32()"
-    function.
-*/
+
+
+
+
+
+
+
+
+
+
+
 rule fire2013 : webshell
 {
     meta:

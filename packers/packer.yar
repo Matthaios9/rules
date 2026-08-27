@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.
 
-*/
+
+
+
 
 import "pe"
 
@@ -71,16 +71,16 @@ strings:
 		$patternBorland
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule java
-{
-strings:
-		$patternjava = "java" wide ascii
-	condition:
-		$patternjava
-}
-*/
+
+
+
+
+
+
+
+
+
+
 rule MSLRHv032afakePCGuard4xxemadicius
 {
 strings:
@@ -10079,17 +10079,17 @@ condition:
 		$a0 at pe.entry_point
 }
 
-// 20150909 - Issue #39 - Commented because of High FP rate
-/*
-rule Armadillov171
-{
-strings:
-		$a0 = { 55 8B EC 6A FF 68 [4] 68 [4] 64 A1 }
 
-condition:
-		$a0 at pe.entry_point
-}
-*/
+
+
+
+
+
+
+
+
+
+
 
 rule KBySV022shoooo
 {
@@ -16702,7 +16702,7 @@ rule obsidium : Packer
 		description="Obsidium"
 
 	strings:
-		$str1={EB 02 [2] E8 25 00 00 00 EB 04 [4] EB 01 ?? 8B 54 24 0C EB 01 ?? 83 82 B8 00 00 00 23 EB 01 ?? 33 C0 EB 02 [2] C3 EB 02 [2] EB 04} /*EntryPoint*/
+		$str1={EB 02 [2] E8 25 00 00 00 EB 04 [4] EB 01 ?? 8B 54 24 0C EB 01 ?? 83 82 B8 00 00 00 23 EB 01 ?? 33 C0 EB 02 [2] C3 EB 02 [2] EB 04}
 
 	condition:
 		$str1 at pe.entry_point
@@ -16715,7 +16715,7 @@ rule pecompact2 : Packer
 		description="PECompact"
 
 	strings:
-		$str1={B8 [3] 00 50 64 FF 35 00 00 00 00 64 89 25 00 00 00 00 33 C0 89 08 50 45 43} /*EntryPoint*/
+		$str1={B8 [3] 00 50 64 FF 35 00 00 00 00 64 89 25 00 00 00 00 33 C0 89 08 50 45 43}
 
 	condition:
 		$str1 at pe.entry_point
@@ -16728,7 +16728,7 @@ rule aspack : Packer
 		description="ASPack"
 
 	strings:
-		$str1={60 E8 00 00 00 00 5D 81 ED 5D 3B 40 00 64 A1 30 00 00 00 0F B6 40 02 0A C0 74 04 33 C0 87 00 B9 [2] 00 00 8D BD B7 3B 40 00 8B F7 AC} /*EntryPoint*/
+		$str1={60 E8 00 00 00 00 5D 81 ED 5D 3B 40 00 64 A1 30 00 00 00 0F B6 40 02 0A C0 74 04 33 C0 87 00 B9 [2] 00 00 8D BD B7 3B 40 00 8B F7 AC}
 
 	condition:
 		$str1 at pe.entry_point
@@ -16741,7 +16741,7 @@ rule execryptor : Protector
 		description="EXECryptor"
 
 	strings:
-		$str1={E8 24 00 00 00 8B 4C 24 0C C7 01 17 00 01 00 C7 81 B8 00 00 00 00 00 00 00 31 C0 89 41 14 89 41 18 80 A1 C1 00 00 00 FE C3 31 C0 64 FF 30 64 89 20 64 8F 05 00 00 00 00} /*EntryPoint*/
+		$str1={E8 24 00 00 00 8B 4C 24 0C C7 01 17 00 01 00 C7 81 B8 00 00 00 00 00 00 00 31 C0 89 41 14 89 41 18 80 A1 C1 00 00 00 FE C3 31 C0 64 FF 30 64 89 20 64 8F 05 00 00 00 00}
 
 	condition:
 		$str1 at pe.entry_point

@@ -1,10 +1,10 @@
-/*
-    PHP file(s) (spreader) that, using multiple remote
-    servers, use file_get_contents() to get more PHP
-    content that it writes in files with random name
-    (echoers), file(s) which use file_get_contents()
-    to get and echo the HTML (chinese blog/shop/???).
-*/
+
+
+
+
+
+
+
 rule chinese_spam_spreader : webshell
 {
     meta:

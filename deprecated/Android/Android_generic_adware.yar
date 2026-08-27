@@ -15,5 +15,5 @@ rule dowgin:adware android
 
     condition:
         all of them
-        
+
 }

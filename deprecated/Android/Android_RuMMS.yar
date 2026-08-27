@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
+
+
+
 
 import "androguard"
 
@@ -18,7 +18,7 @@ rule Android_RuMMS
 		androguard.package_name("org.zxformat") and
 		androguard.permission(/android.permission.RECEIVE_SMS/) and
 		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/)
-		
+
 }
 
 rule Android_RuMMS_0
@@ -29,11 +29,11 @@ rule Android_RuMMS_0
 		source = "https://www.fireeye.com/blog/threat-research/2016/04/rumms-android-malware.html"
 
 	condition:
-		(androguard.service(/\.Tb/) and 
-		 androguard.service(/\.Ad/) and 
-		 androguard.receiver(/\.Ac/) and 
+		(androguard.service(/\.Tb/) and
+		 androguard.service(/\.Ad/) and
+		 androguard.receiver(/\.Ac/) and
 		 androguard.receiver(/\.Ma/)) or
-        (androguard.url(/http\:\/\/37\.1\.207/) and 
+        (androguard.url(/http\:\/\/37\.1\.207/) and
 		 androguard.url(/\/api\/\?id\=7/))
-		
+
 }

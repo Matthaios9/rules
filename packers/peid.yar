@@ -1,25 +1,25 @@
-/*
-YARA rules generated with ./peid2yara.py
-BY: Jaume Martin
-GITHUB: https://git.todoparami.net/Xumeiquer/PEiD_to_Yara
-GENERATED ON: 2016-08-29 21:22:29.883920
-
-Rules generated from:
-
-https://raw.githubusercontent.com/joxeankoret/pyew/VERSION_3X/plugins/UserDB.TXT
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/userdb_panda.txt
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/userdb_jclausing.txt
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/userdb_exeinfope.txt
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/eppackersigs.peid
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/epcompilersigs.peid
-https://raw.githubusercontent.com/AlienVault-Labs/AlienVaultLabs/master/peid2yar/dbs/UserDB.TXT
-https://raw.githubusercontent.com/cuckoosandbox/cuckoo/master/data/peutils/UserDB.TXT
-http://handlers.sans.org/jclausing/userdb.txt
-https://raw.githubusercontent.com/seifreed/PEID/master/userdb.txt
-https://raw.githubusercontent.com/guelfoweb/peframe/5beta/peframe/signatures/userdb.txt
 
 
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import "pe"
 
@@ -6037,15 +6037,15 @@ rule Armadillo_v177: PEiD
 
 }
 
-/* False positive - #39
-rule Armadillo_v171: PEiD
-{
-    strings:
-        $a = { 55 8B EC 6A FF 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 64 A1 }
-    condition:
-        $a at pe.entry_point
 
-}*/
+
+
+
+
+
+
+
+
 
 rule AsCrypt_v01_SToRM_4: PEiD
 {
@@ -69453,4 +69453,3 @@ rule ACProtect_14x_RISCO_soft: PEiD
         for any of ($*) : ( $ at pe.entry_point )
 
 }
-

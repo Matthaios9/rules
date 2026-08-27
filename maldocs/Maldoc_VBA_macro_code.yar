@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
+
+
+
 
 
 rule Contains_VBA_macro_code
@@ -17,7 +17,7 @@ rule Contains_VBA_macro_code
 
 		$97str1 = "_VBA_PROJECT_CUR" wide
 		$97str2 = "VBAProject"
-		$97str3 = { 41 74 74 72 69 62 75 74 00 65 20 56 42 5F } // Attribute VB_
+		$97str3 = { 41 74 74 72 69 62 75 74 00 65 20 56 42 5F }
 
 		$xmlstr1 = "vbaProject.bin"
 		$xmlstr2 = "vbaData.xml"

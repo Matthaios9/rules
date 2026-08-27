@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and 
-    open to any user or organization, as long as you use it under this license.
-*/
+
+
+
+
 
 rule extortion_email
 {
@@ -13,8 +13,8 @@ rule extortion_email
 	  $eml1="From:"
     $eml2="To:"
     $eml3="Subject:"
-		
-		// Common Subjects scammer keep for luring the targets 
+
+
     $sub1 = "Hackers know password from your account."
     $sub2 = "Security Alert. Your accounts were hacked by a criminal group."
     $sub3 = "Your account was under attack! Change your credentials!"
@@ -24,7 +24,7 @@ rule extortion_email
     $sub7 = "Be sure to read this message! Your personal data is threatened!"
     $sub8 = "Password must be changed now."
 
-		// Keywords used for extortion
+
     $key1 = "BTC" nocase
     $key2 = "Wallet" nocase
     $key3 = "Bitcoin" nocase
@@ -35,8 +35,8 @@ rule extortion_email
     $key7 = "access" nocase
     $key8 = "virus" nocase
 
-	condition: 
+	condition:
     all of ($eml*) and
     any of ($sub*) and
     any of ($key*)
-}		
+}

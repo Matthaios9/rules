@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
+
+
+
 
 import "androguard"
 
@@ -15,7 +15,7 @@ rule Android_OmniRat
 	strings:
 		$a = "android.engine.apk"
 	condition:
-		(androguard.activity(/com.app.MainActivity/i) and 
-		 androguard.permission(/android.permission.WRITE_EXTERNAL_STORAGE/i) and 
+		(androguard.activity(/com.app.MainActivity/i) and
+		 androguard.permission(/android.permission.WRITE_EXTERNAL_STORAGE/i) and
 		 androguard.package_name(/com.app/i)) and $a
 }

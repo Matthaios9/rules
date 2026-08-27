@@ -1,14 +1,14 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-  Description: None
-  Priority: 5
-  Scope: Against Email
-  Tags: None
-  Created in PhishMe's Triage on September 14, 2015 2:33 PM
-*/
+
+
+
+
+
+
+
+
+
+
 
 rule CryptoWall_Resume_phish : mail
 {
@@ -32,18 +32,18 @@ rule CryptoWall_Resume_phish : mail
     1 of ($hello*) and 1 of ($file*) and 1 of ($sal*)
 }
 
-/*
-  Description: None
-  Priority: 5
-  Scope: Against Attachment
-  Tags: None
-  Created in PhishMe's Triage on September 14, 2015 2:35 PM
-*/
+
+
+
+
+
+
+
 
 rule docx_macro : mail
 {
   strings:
-    $header="PK" 
+    $header="PK"
     $vbaStrings="word/vbaProject.bin" nocase
 
   condition:

@@ -1,12 +1,12 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-	Androguard module used in this rule file is under development by people at https://koodous.com/.
 
-	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
-*/
+
+
+
+
+
+
+
 
 import "androguard"
 
@@ -28,6 +28,6 @@ rule Android_AliPay_smsStealer : android
 		androguard.certificate.sha1("0CDFC700D0BDDC3EA50D71B54594BF3711D0F5B2") or
 		androguard.permission(/android.permission.RECEIVE_SMS/) and
 		androguard.permission(/android.permission.INTERNET/) and
-		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/) and 		
+		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/) and
 		all of ($str_*)
 }

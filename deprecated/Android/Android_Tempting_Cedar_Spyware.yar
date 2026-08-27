@@ -8,7 +8,7 @@ rule android_tempting_cedar_spyware
 		$MANIFEST = "META-INF/MANIFEST.MF"
 		$DEX_FILE = "classes.dex"
 		$string = "rsdroid.crt"
-	
+
 	condition:
-    	$PK_HEADER in (0..4) and $MANIFEST and $DEX_FILE and any of ($string*)
+	$PK_HEADER in (0..4) and $MANIFEST and $DEX_FILE and any of ($string*)
 }

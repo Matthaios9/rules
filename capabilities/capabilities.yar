@@ -1,6 +1,6 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
+
+
+
 
 
 rule inject_thread {
@@ -18,52 +18,52 @@ rule inject_thread {
     condition:
         $c1 and $c2 and ( $c3 or $c4 ) and ( $c5 or $c6 or $c7 )
 }
-// Issue #101 - Commented because of High FP rate
-/*
-rule create_process {
-    meta:
-        description = "Create a new process"
-	version = "0.2"
-    strings:
-        $f1 = "Shell32.dll" nocase
-        $f2 = "Kernel32.dll" nocase
-        $c1 = "ShellExecute"
-        $c2 = "WinExec"
-        $c3 = "CreateProcess"
-        $c4 = "CreateThread"
-    condition:
-        ($f1 and $c1 ) or $f2 and ($c2 or $c3 or $c4)
-}
-*/
 
-// Issue #101 - Commented because of High FP rate
-/*
-rule persistence {
-    meta:
-        description = "Install itself for autorun at Windows startup"
-	version = "0.1"
-    strings:
-        $p1 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run" nocase
-        $p2 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunOnce" nocase
-        $p3 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunServices" nocase
-        $p4 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\RunServicesOnce" nocase
-        $p5 = "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon" nocase
-        $p6 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run" nocase
-        $p7 = "SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\" nocase
-        $p8 = "SOFTWARE\\Microsoft\\WindowsNT\\CurrentVersion\\Windows" nocase
-        $p9 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\SharedTaskScheduler" nocase
-        $p10 = "comfile\\shell\\open\\command" nocase
-        $p11 = "piffile\\shell\\open\\command" nocase
-        $p12 = "exefile\\shell\\open\\command" nocase
-        $p13 = "txtfile\\shell\\open\\command" nocase
-	$p14 = "\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options"
-        $f1 = "win.ini" nocase
-        $f2 = "system.ini" nocase
-        $f3 = "Start Menu\\Programs\\Startup" nocase
-    condition:
-        any of them
-}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule hijack_network {
     meta:
@@ -242,26 +242,26 @@ rule network_p2p_win {
         description = "Communications over P2P network"
 	version = "0.1"
     strings:
-     	$c1 = "PeerCollabExportContact"
-     	$c2 = "PeerCollabGetApplicationRegistrationInfo"
-     	$c3 = "PeerCollabGetEndpointName"
-     	$c4 = "PeerCollabGetEventData"
-     	$c5 = "PeerCollabGetInvitationResponse"
-     	$c6 = "PeerCollabGetPresenceInfo"
-     	$c7 = "PeerCollabGetSigninOptions"
-     	$c8 = "PeerCollabInviteContact"
-     	$c9 = "PeerCollabInviteEndpoint"
-     	$c10 = "PeerCollabParseContact"
-     	$c11 = "PeerCollabQueryContactData"
-     	$c12 = "PeerCollabRefreshEndpointData"
-     	$c13 = "PeerCollabRegisterApplication"
-     	$c14 = "PeerCollabRegisterEvent"
-     	$c15 = "PeerCollabSetEndpointName"
-     	$c16 = "PeerCollabSetObject"
-     	$c17 = "PeerCollabSetPresenceInfo"
-     	$c18 = "PeerCollabSignout"
-     	$c19 = "PeerCollabUnregisterApplication"
-     	$c20 = "PeerCollabUpdateContact"
+	$c1 = "PeerCollabExportContact"
+	$c2 = "PeerCollabGetApplicationRegistrationInfo"
+	$c3 = "PeerCollabGetEndpointName"
+	$c4 = "PeerCollabGetEventData"
+	$c5 = "PeerCollabGetInvitationResponse"
+	$c6 = "PeerCollabGetPresenceInfo"
+	$c7 = "PeerCollabGetSigninOptions"
+	$c8 = "PeerCollabInviteContact"
+	$c9 = "PeerCollabInviteEndpoint"
+	$c10 = "PeerCollabParseContact"
+	$c11 = "PeerCollabQueryContactData"
+	$c12 = "PeerCollabRefreshEndpointData"
+	$c13 = "PeerCollabRegisterApplication"
+	$c14 = "PeerCollabRegisterEvent"
+	$c15 = "PeerCollabSetEndpointName"
+	$c16 = "PeerCollabSetObject"
+	$c17 = "PeerCollabSetPresenceInfo"
+	$c18 = "PeerCollabSignout"
+	$c19 = "PeerCollabUnregisterApplication"
+	$c20 = "PeerCollabUpdateContact"
     condition:
         5 of them
 }

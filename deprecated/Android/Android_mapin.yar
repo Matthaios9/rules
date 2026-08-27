@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) 
-    and open to any user or organization, as long as you use it under this license.
-*/
+
+
+
+
 
 rule dropperMapin : android
 {
@@ -31,12 +31,12 @@ rule Mapin : android
         sample = "7f208d0acee62712f3fa04b0c2744c671b3a49781959aaf6f72c2c6672d53776"
 
     strings:
-        $a = "138675150963" //GCM id
+        $a = "138675150963"
         $b = "res/xml/device_admin.xml"
         $c = "Device registered: regId ="
-        
+
 
     condition:
         all of them
-        
+
 }

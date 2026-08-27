@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and 
-    open to any user or organization, as long as you use it under this license.
-*/
+
+
+
+
 
 rule with_attachment : mail {
 	meta:
@@ -26,7 +26,6 @@ rule without_attachments : mail {
                 $mime_type = "Content-Type: multipart/mixed"
 	condition:
                 all of ( $eml_* ) and
-		not $attachment_id and 
+		not $attachment_id and
                 not $mime_type
 }
-

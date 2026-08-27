@@ -1,12 +1,12 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-*/
 
-/*
-	Androguard module used in this rule file is under development by people at https://koodous.com/.
 
-	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
-*/
+
+
+
+
+
+
+
 
 import "androguard"
 
@@ -20,7 +20,7 @@ rule Android_Switcher
     source2 = "https://koodous.com/rulesets/2049"
 
 	strings:
-		$str_1 = "javascript:scrollTo"		
+		$str_1 = "javascript:scrollTo"
 		$str_5 = "javascript:document.getElementById('dns1')"
 		$str_6 = "admin:"
 
@@ -30,8 +30,8 @@ rule Android_Switcher
 
 
 	condition:
-		androguard.certificate.sha1("2421686AE7D976D19AB72DA1BDE273C537D2D4F9") or 
+		androguard.certificate.sha1("2421686AE7D976D19AB72DA1BDE273C537D2D4F9") or
 		(androguard.permission(/android.permission.INTERNET/) and
-		androguard.permission(/android.permission.ACCESS_WIFI_STATE/) and 
+		androguard.permission(/android.permission.ACCESS_WIFI_STATE/) and
 		($dns_2 or $dns_3 or $dns_4) and all of ($str_*))
 }

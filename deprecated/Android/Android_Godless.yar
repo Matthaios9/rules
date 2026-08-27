@@ -1,7 +1,7 @@
-/*
-    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
-*/
+
+
+
 
 import "androguard"
 
@@ -35,6 +35,6 @@ rule Android_Godlike_2
 		$a_4 = "libpl_droidsonroids_gif.so"
 	condition:
 		(androguard.service(/FastInstallService/i) and
-		androguard.service(/DownloadService/i)) and 
+		androguard.service(/DownloadService/i)) and
 		any of ($a_*)
 }

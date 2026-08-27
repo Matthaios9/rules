@@ -1,19 +1,19 @@
-/*
-    This file is part of Manalyze.
 
-    Manalyze is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
 
-    Manalyze is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with Manalyze.  If not, see <http://www.gnu.org/licenses/>.
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 rule System_Tools
 {
@@ -36,11 +36,11 @@ rule System_Tools
         $a13 = "bcdedit.exe" nocase wide ascii
         $a14 = "dumpcap.exe" nocase wide ascii
         $a15 = "tcpdump.exe" nocase wide ascii
-		$a16 = "mshta.exe" nocase wide ascii    // Used by DUBNIUM to download files
-        $a17 = "control.exe" nocase wide ascii  // Used by EquationGroup to launch DLLs
+		$a16 = "mshta.exe" nocase wide ascii
+        $a17 = "control.exe" nocase wide ascii
         $a18 = "regsvr32.exe" nocase wide ascii
         $a19 = "rundll32.exe" nocase wide ascii
-		
+
     condition:
         any of them
 }
@@ -55,7 +55,7 @@ rule Browsers
         $ff_key = "key3.db"
         $ff_log = "signons.sqlite"
         $chrome = "chrome.exe" nocase wide ascii
-        // TODO: Add user-agent strings
+
     condition:
         any of them
 }
@@ -515,7 +515,7 @@ rule Antivirus
         $a575 = "zapro.exe" nocase wide ascii
         $a577 = "zatutor.exe" nocase wide ascii
         $a579 = "zonealarm.exe" nocase wide ascii
-		// Strings from Dubnium below
+
 		$a580 = "QQPCRTP.exe" nocase wide ascii
 		$a581 = "QQPCTray.exe" nocase wide ascii
 		$a582 = "ZhuDongFangYu.exe" nocase wide ascii
@@ -534,7 +534,7 @@ rule Antivirus
 		$a595 = /ms(seces|mpeng).exe/ nocase wide ascii
 		$a596 = "afwserv.exe" nocase wide ascii
 		$a597 = "FiddlerUser"
-		
+
     condition:
         any of them
 }
@@ -548,12 +548,12 @@ rule VM_Generic_Detection : AntiVM
         $a1 = "HARDWARE\\Description\\System" nocase wide ascii
         $a2 = "SYSTEM\\CurrentControlSet\\Control\\SystemInformation" nocase wide ascii
         $a3 = "SYSTEM\\CurrentControlSet\\Enum\\IDE" nocase wide ascii
-        $redpill = { 0F 01 0D 00 00 00 00 C3 } // Copied from the Cuckoo project
-        
-        // CLSIDs used to detect if speakers are present. Hoping this will not cause false positives.
-        $teslacrypt1 = { D1 29 06 E3 E5 27 CE 11 87 5D 00 60 8C B7 80 66 } // CLSID_AudioRender
-        $teslacrypt2 = { B3 EB 36 E4 4F 52 CE 11 9F 53 00 20 AF 0B A7 70 } // CLSID_FilterGraph
-        
+        $redpill = { 0F 01 0D 00 00 00 00 C3 }
+
+
+        $teslacrypt1 = { D1 29 06 E3 E5 27 CE 11 87 5D 00 60 8C B7 80 66 }
+        $teslacrypt2 = { B3 EB 36 E4 4F 52 CE 11 9F 53 00 20 AF 0B A7 70 }
+
     condition:
         any of ($a*) or $redpill or all of ($teslacrypt*)
 }
@@ -587,7 +587,7 @@ rule VMWare_Detection : AntiVM
         $vmware22 = "VMMEMCTL" nocase wide ascii
         $vmware23 = "vmx86" nocase wide ascii
 
-        // VMware MAC addresses
+
         $vmware_mac_1a = "00-05-69" wide ascii
         $vmware_mac_1b = "00:05:69" wide ascii
         $vmware_mac_1c = "000569" wide ascii
@@ -601,7 +601,7 @@ rule VMWare_Detection : AntiVM
         $vmware_mac_4b = "00:1C:14" nocase wide ascii
         $vmware_mac_4c = "001C14" nocase wide ascii
 
-        // PCI Vendor IDs, from Hacking Team's leak
+
         $virtualbox_vid_1 = "VEN_15ad" nocase wide ascii
 
     condition:
@@ -660,19 +660,19 @@ rule VirtualBox_Detection : AntiVM
         $virtualbox9 = "vboxservice" nocase wide ascii
         $virtualbox10 = "vboxtray" nocase wide ascii
 
-        // MAC addresses
+
         $virtualbox_mac_1a = "08-00-27"
         $virtualbox_mac_1b = "08:00:27"
         $virtualbox_mac_1c = "080027"
 
-        // PCI Vendor IDs, from Hacking Team's leak
+
         $virtualbox_vid_1 = "VEN_80EE" nocase wide ascii
-        
-        // Registry keys
+
+
         $virtualbox_reg_1 = "SOFTWARE\\Oracle\\VirtualBox Guest Additions" nocase wide ascii
         $virtualbox_reg_2 = /HARDWARE\\ACPI\\(DSDT|FADT|RSDT)\\VBOX__/ nocase wide ascii
-        
-        // Other
+
+
         $virtualbox_files = /C:\\Windows\\System32\\drivers\\vbox.{15}\.(sys|dll)/ nocase wide ascii
         $virtualbox_services = "System\\ControlSet001\\Services\\VBox[A-Za-z]+" nocase wide ascii
         $virtualbox_pipe = /\\\\.\\pipe\\(VBoxTrayIPC|VBoxMiniRdDN)/ nocase wide ascii
@@ -690,7 +690,7 @@ rule Parallels_Detection : AntiVM
         $a1 = "c!nu"
         $a2 = "mber"
 
-        // PCI Vendor IDs, from Hacking Team's leak
+
         $parallels_vid_1 = "VEN_80EE" nocase wide ascii
     condition:
         all of them
@@ -736,7 +736,7 @@ rule WMI_strings
     meta:
         description = "Accesses the WMI"
     strings:
-        // WMI namespaces which may be referenced in the ConnectServer call. All in the form of "ROOT\something"
+
         $a0 = /ROOT\\(CIMV2|AccessLogging|ADFS|aspnet|Cli|Hardware|interop|InventoryLogging|Microsoft.{10}|Policy|RSOP|SECURITY|ServiceModel|snmpStandardCimv2|subscription|virtualization|WebAdministration|WMI)/ nocase ascii wide
     condition:
         any of them
@@ -747,9 +747,9 @@ rule Obfuscated_Strings
 	meta:
 		description = "Contains obfuscated function names"
 	strings:
-		$a0 = { (46 | 66) 64 75 (51 | 71) 73 6E 62 (40 | 60) 65 65 73 64 72 72 } // [Gg]et[Pp]roc[Aa]ddress XOR 0x01
-		$a1 = { (45 | 65) 67 76 (52 | 72) 70 6D 61 (43 | 63) 66 66 70 67 71 71 } // GetProcAddress XOR 0x02
-		$a2 = { (44 | 64) 66 77 (53 | 73) 71 6C 60 (42 | 62) 67 67 71 66 70 70 } // etc...
+		$a0 = { (46 | 66) 64 75 (51 | 71) 73 6E 62 (40 | 60) 65 65 73 64 72 72 }
+		$a1 = { (45 | 65) 67 76 (52 | 72) 70 6D 61 (43 | 63) 66 66 70 67 71 71 }
+		$a2 = { (44 | 64) 66 77 (53 | 73) 71 6C 60 (42 | 62) 67 67 71 66 70 70 }
 		$a3 = { (43 | 63) 61 70 (54 | 74) 76 6B 67 (45 | 65) 60 60 76 61 77 77 }
 		$a4 = { (42 | 62) 60 71 (55 | 75) 77 6A 66 (44 | 64) 61 61 77 60 76 76 }
 		$a5 = { (41 | 61) 63 72 (56 | 76) 74 69 65 (47 | 67) 62 62 74 63 75 75 }
@@ -778,7 +778,7 @@ rule Obfuscated_Strings
 		$a28 = { (5A | 7A) 78 69 (4D | 6D) 6F 72 7E (5C | 7C) 79 79 6F 78 6E 6E }
 		$a29 = { (59 | 79) 7B 6A (4E | 6E) 6C 71 7D (5F | 7F) 7A 7A 6C 7B 6D 6D }
 		$a30 = { (58 | 78) 7A 6B (4F | 6F) 6D 70 7C (5E | 7E) 7B 7B 6D 7A 6C 6C }
-		// XOR 0x20 removed because it toggles capitalization and causes [Gg]ET[Pp]ROC[Aa]DDRESS to match.
+
 		$a32 = { (66 | 46) 44 55 (71 | 51) 53 4E 42 (60 | 40) 45 45 53 44 52 52 }
 		$a33 = { (65 | 45) 47 56 (72 | 52) 50 4D 41 (63 | 43) 46 46 50 47 51 51 }
 		$a34 = { (64 | 44) 46 57 (73 | 53) 51 4C 40 (62 | 42) 47 47 51 46 50 50 }
@@ -1001,9 +1001,9 @@ rule Obfuscated_Strings
 		$a251 = { (BB | 9B) 99 88 (AC | 8C) 8E 93 9F (BD | 9D) 98 98 8E 99 8F 8F }
 		$a252 = { (BA | 9A) 98 89 (AD | 8D) 8F 92 9E (BC | 9C) 99 99 8F 98 8E 8E }
 		$a253 = { (B9 | 99) 9B 8A (AE | 8E) 8C 91 9D (BF | 9F) 9A 9A 8C 9B 8D 8D }
-		$a254 = { (4D | 6D) 6E 60 65 (4D | 6D) 68 63 73 60 73 78 }  // "LoadLibrary" XOR 0x01
-		$a255 = { (4E | 6E) 6D 63 66 (4E | 6E) 6B 60 70 63 70 7B }  // "LoadLibrary" XOR 0x02
-		$a256 = { (4F | 6F) 6C 62 67 (4F | 6F) 6A 61 71 62 71 7A }  // etc...
+		$a254 = { (4D | 6D) 6E 60 65 (4D | 6D) 68 63 73 60 73 78 }
+		$a255 = { (4E | 6E) 6D 63 66 (4E | 6E) 6B 60 70 63 70 7B }
+		$a256 = { (4F | 6F) 6C 62 67 (4F | 6F) 6A 61 71 62 71 7A }
 		$a257 = { (48 | 68) 6B 65 60 (48 | 68) 6D 66 76 65 76 7D }
 		$a258 = { (49 | 69) 6A 64 61 (49 | 69) 6C 67 77 64 77 7C }
 		$a259 = { (4A | 6A) 69 67 62 (4A | 6A) 6F 64 74 67 74 7F }
@@ -1032,7 +1032,7 @@ rule Obfuscated_Strings
 		$a282 = { (51 | 71) 72 7C 79 (51 | 71) 74 7F 6F 7C 6F 64 }
 		$a283 = { (52 | 72) 71 7F 7A (52 | 72) 77 7C 6C 7F 6C 67 }
 		$a284 = { (53 | 73) 70 7E 7B (53 | 73) 76 7D 6D 7E 6D 66 }
-		// XOR 0x20 removed because it toggles capitalization and causes [lL]OAD[Ll]IBRARY to match.
+
 		$a286 = { (6D | 4D) 4E 40 45 (6D | 4D) 48 43 53 40 53 58 }
 		$a287 = { (6E | 4E) 4D 43 46 (6E | 4E) 4B 40 50 43 50 5B }
 		$a288 = { (6F | 4F) 4C 42 47 (6F | 4F) 4A 41 51 42 51 5A }
@@ -1264,11 +1264,11 @@ rule Base64d_PE
 	meta:
 		description = "Contains a base64-encoded executable"
 		date = "2017-04-21"
-		
+
 	strings:
 		$s0 = "TVqQAAIAAAAEAA8A//8AALgAAAA" wide ascii
 		$s1 = "TVqQAAMAAAAEAAAA//8AALgAAAA" wide ascii
-		
+
 	condition:
 		any of them
 }
@@ -1283,7 +1283,7 @@ rule Misc_Suspicious_Strings
         $a2 = "hack" nocase ascii wide fullword
         $a3 = "exploit" nocase ascii wide
         $a4 = "cmd.exe" nocase ascii wide
-        $a5 = "CWSandbox" nocase wide ascii // Found in some Zeus/Citadel samples
+        $a5 = "CWSandbox" nocase wide ascii
         $a6 = "System32\\drivers\\etc\\hosts" nocase wide ascii
     condition:
         any of them
@@ -1293,7 +1293,7 @@ rule BITS_CLSID
 {
     meta:
         description = "References the BITS service."
-        // The BITS service seems to be used heavily by EquationGroup.
+
     strings:
         $uuid_background_copy_manager_1_5 =     { 1F 77 87 F0 4F D7 1A 4C BB 8A E1 6A CA 91 24 EA }
         $uuid_background_copy_manager_2_0 =     { 12 AD 18 6D E3 BD 93 43 B3 11 09 9C 34 6E 6D F9 }
