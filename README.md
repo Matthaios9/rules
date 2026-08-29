@@ -1,30 +1,73 @@
-# 🛡️ YARA Malware Detection & Threat Hunting Lab
+# YARA Rules
 
-## Overview
+A collection of YARA rules for detecting malware, exploit kits, webshells, and
+other threats organized by category so you can pull in just what you need.
 
-This project is a hands-on YARA rules repository created for practicing malware detection, threat hunting, and static analysis.
+## What's YARA?
 
-The repository contains detection rules organized by security category. The rules can be used to analyze files, malware samples, documents, scripts, and other artifacts for suspicious patterns and known indicators.
+If you're not familiar: YARA is a tool used by malware analysts to identify
+files based on patterns, think of it like a very flexible "signature"
+system. You write a rule describing what a piece of malware looks like
+(specific byte sequences, strings, file structure), and YARA scans files
+against it and tells you what matched. It's widely used in incident
+response, threat hunting, and malware research.
 
-The project focuses on understanding how YARA rules can be used as part of a malware-analysis and defensive-security workflow.
+## What's in here
 
-## 🎯 Project Objectives
+Rules are split by category:
 
-- Develop and test YARA detection rules
-- Identify malware-related indicators
-- Detect suspicious file characteristics
-- Practice static malware analysis
-- Perform threat hunting using YARA
-- Organize rules by detection category
-- Test rules against known samples
-- Understand malware evasion techniques
-- Improve detection and incident-response capabilities
+- `malware/` — general malware families, APT groups, RATs, ransomware, POS malware
+- `webshells/` — web shell detection
+- `exploit_kits/` — known exploit kit signatures
+- `maldocs/` — malicious document detection (Office, PDF)
+- `cve_rules/` — rules tied to specific CVEs
+- `crypto/` — cryptographic algorithm detection
+- `email/` — phishing and malicious email detection
+- `packers/` — packer and compiler identification
+- `capabilities/` — generic capability detection (not necessarily malicious on their own)
+- `antidebug_antivm/` — anti-analysis/anti-VM technique detection
+- `mobile_malware/` — Android-focused rules
+- `utils/` — helper rules (base64, IP/domain extraction, etc.)
 
-## ⚙️ Requirements
+## Requirements
 
-YARA 3.0 or later is recommended.
+YARA 4.0 or later.
 
-Check the installed version:
+Check your installed version:
 
 ```bash
 yara -v
+```
+
+Install it if you don't have it:
+
+- **Ubuntu/Debian:** `sudo apt install yara`
+- **macOS:** `brew install yara`
+- Or build from source: https://yara.readthedocs.io
+
+## Usage
+
+Scan a single file against a rule:
+
+```bash
+yara malware/RANSOM_Locky.yar /path/to/suspicious/file
+```
+
+Scan a directory recursively against a whole category:
+
+```bash
+yara -r malware/*.yar /path/to/directory
+```
+
+Scan against every rule in the repo:
+
+```bash
+find . -name "*.yar" -exec yara -w {} /path/to/file \;
+```
+
+Note the `-w` flag treats warnings as non-fatal so a scan doesn't stop
+partway through.
+
+## License
+
+GNU GPLv2 — see [LICENSE](./LICENSE).
