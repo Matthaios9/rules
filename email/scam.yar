@@ -17,8 +17,6 @@ rule content : mail {
 rule attachment : mail {
 	meta:
 		description = "Detects scam emails with phishing attachment."
-		test1 = "email/eml/transferencia1.eml"
-		test2 = "email/eml/transferencia2.eml"
 
 	strings:
 		$filename = "filename=\"scan001.pdf.html\""
