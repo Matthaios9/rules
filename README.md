@@ -26,7 +26,7 @@ Rules are split by category:
 - `packers/` — packer and compiler identification
 - `capabilities/` — generic capability detection (not necessarily malicious on their own)
 - `antidebug_antivm/` — anti-analysis/anti-VM technique detection
-- `utils/` — helper rules (base64, IP/domain extraction, etc.); some rules in here are disabled by default and need to be enabled — note some of these rules are disabled by default and need to be enabled before use
+- `utils/` — helper rules (base64, IP/domain extraction, etc.); some rules in here are disabled by default and need to be enabled
 
 ## Requirements
 
